@@ -31,7 +31,7 @@ const SignUpModal = ({ onClose, onSignIn }) => {
     }
   };
 
-  // email login
+  // email sign up
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

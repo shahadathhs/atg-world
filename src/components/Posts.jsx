@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BsExclamationCircle, BsThreeDots } from "react-icons/bs";
 import pic1 from "../assets/posts/Rectangle 5.png";
 import type1 from "../assets/posts/✍️ Article.png";
@@ -21,8 +21,11 @@ import follow1 from "../assets/follow/Rectangle 6.png";
 import follow2 from "../assets/follow/Rectangle 6 (1).png";
 import follow3 from "../assets/follow/Rectangle 6 (2).png";
 import follow4 from "../assets/follow/Rectangle 6 (3).png";
+import { AuthContext } from './../Providers/AuthProviders';
 
 const Posts = () => {
+  const {user} = useContext(AuthContext);
+
   const followItems = [
     { img: follow1, text: "Leisure" },
     { img: follow2, text: "Activism" },
@@ -38,8 +41,6 @@ const Posts = () => {
       return newFollowState;
     });
   };
-
-  let user = true;
 
   return (
     <div className="py-3 grid grid-cols-1 md:grid-cols-3 gap-5">
