@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
+import { MdOutlineCancel } from 'react-icons/md';
 
 const SignInModal = ({ onClose, onSignUp }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/3 sm:bottom-0 sm:h-auto sm:rounded-t-lg">
+    <div className="fixed inset-0 flex items-end md:items-center justify-center z-50 bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2 sm:h-auto sm:rounded-t-lg relative">
+        <button onClick={onClose} className="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+          <MdOutlineCancel size={24} />
+        </button>
         <h2 className="text-2xl mb-4">Sign In</h2>
         {/* Sign In Form */}
         <form>
@@ -14,9 +18,6 @@ const SignInModal = ({ onClose, onSignUp }) => {
               Sign Up
             </button>
           </p>
-          <button onClick={onClose} className="btn w-full mt-2">
-            Cancel
-          </button>
         </form>
       </div>
     </div>
@@ -26,6 +27,6 @@ const SignInModal = ({ onClose, onSignUp }) => {
 export default SignInModal;
 
 SignInModal.propTypes = {
-  onClose: PropTypes.node,
-  onSignUp: PropTypes.node,
-}
+  onClose: PropTypes.func.isRequired,
+  onSignUp: PropTypes.func.isRequired,
+};

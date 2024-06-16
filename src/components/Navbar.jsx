@@ -49,14 +49,15 @@ const Navbar = () => {
                 <div tabIndex={0} role="button" className="btn m-1">
                   <div className="avatar space-x-2 items-center">
                     <div className="w-8 rounded">
-                      {user?.image ? (
-                        <img src={user?.image} alt="User avatar" />
-                      ) : (
-                        <img
-                          src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                          alt="Default avatar"
-                        />
-                      )}
+                      {user?.photoURL 
+                      ?
+                      <img src={user?.photoURL} alt="User avatar" />
+                      :
+                      <img
+                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      alt="Default avatar"
+                      />
+                      }
                     </div>
                     <p>{user?.displayName || "anonymous user"}</p>
                   </div>
