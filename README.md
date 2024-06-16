@@ -55,4 +55,4 @@
    npm run dev
    ```
 
-You should now see the IndustrialPlaza website running locally on your machine. Enjoy seamless browsing and exploring properties!
+You should now see the ATG-WORLD website running locally on your machine. Enjoy seamless browsing and exploring properties!
