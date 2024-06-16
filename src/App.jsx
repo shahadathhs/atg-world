@@ -1,42 +1,36 @@
 import Posts from "./components/Posts"
-import logo from "./assets/nav/whole.png"
-import { FaArrowLeft, FaSearch } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import bg1 from "./assets/banner//Rectangle 2.png";
 import bg2 from "./assets/banner/Rectangle 3.png";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { LuUsers } from "react-icons/lu";
+import Navbar from "./components/Navbar";
+import { useContext, useState } from "react";
+import { AuthContext } from "./Providers/AuthProviders";
+import toast from "react-hot-toast";
 
 function App() {
-  let user = true;
+  const { user } = useContext(AuthContext);
+  const [hasJoined, setHasJoined] = useState(false);
 
+  const handleJoinGroup = () => {
+    if (user) {
+      setHasJoined(true);
+      toast.success('Successfully Joined The Group!')
+    } else {
+      toast.error('Please log in first!')
+    }
+  };
 
+  const handleLeaveGroup = () => {
+    setHasJoined(false);
+    toast.success('Successfully Left The Group!')
+  };
   return (
     <div className="container mx-auto">
       {/* Navbar */}
-      <div className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="p-3 hidden md:flex justify-between items-center gap-3 h-[75px]">
-          <div>
-            <img src={logo} alt="" />
-          </div>
-
-          <div className="relative w-full max-w-sm">
-            <input 
-              type="text" 
-              className="bg-base-200 p-2 pl-10 pr-4 rounded-full w-full" 
-              placeholder="Search for your favorite groups in ATG"
-            />
-            <div className="absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500">
-              <FaSearch />
-            </div>
-          </div>
-
-          <div className="font-bold flex items-center">
-            <button className="btn">Create account</button> <span className="text-blue-500 hidden md:flex ml-2">It is free!</span>
-          </div>
-
-        </div>
-      </div>
+      <Navbar />
       
       {/* Banner */}
       <div className="h-80">
@@ -48,14 +42,15 @@ function App() {
             <div>
               <FaArrowLeft />
             </div>
+            {/* join / leave button */}
             <div>
               {
-                user
-                ?
-                <button className="border-2 p-2 rounded-lg">Join Group</button>
+                hasJoined 
+                ? 
+                <button onClick={handleLeaveGroup} className="border-2 p-2 rounded-lg">Leave Group</button>
                 :
-                <button className="border-2 p-2 rounded-lg">Leave Group</button>
-              } 
+                <button onClick={handleJoinGroup} className="border-2 p-2 rounded-lg">Join Group</button>
+              }
             </div>
           </div>
           <div className="p-5 absolute z-30 text-white top-44 md:left-36">
@@ -66,7 +61,7 @@ function App() {
       </div>
       
       {/* PostNav */}
-      <div className="sticky top-0 md:top-[75px] z-40 bg-white shadow-md">
+      <div className="sticky top-[75px] z-40 bg-white shadow-md">
         <div>
           <div className="hidden md:flex p-4 border-b-2 justify-between items-center">
             <div className="space-x-4">
@@ -82,11 +77,11 @@ function App() {
               <button className="btn">Write a Post <IoMdArrowDropdownCircle /></button>
               {/* join / leave button */}
               {
-                user
-                ?
-                <button className="btn bg-blue-600 text-white">Join Group <LuUsers /></button>
-                :
-                <button className="btn"> <FaArrowRightFromBracket /> Leave Group </button>
+              hasJoined 
+              ?
+              <button onClick={handleLeaveGroup} className="btn bg-blue-600 text-white">Leave Group <FaArrowRightFromBracket /></button>
+              :
+              <button onClick={handleJoinGroup} className="btn">Join Group <LuUsers /></button>
               }
             </div>
           </div>
