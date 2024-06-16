@@ -1,16 +1,13 @@
-# IndustrialPlaza
+# ATG-WORLD
 
 ## Live Site URLs
 
-- <https://ningth-a-industrial-plaza.web.app>
-- <https://ningth-a-industrial-plaza.firebaseapp.com>
-
-## This is a simple real state website with firebase authentication
+- <https://task-atg-world.web.app>
+- <https://task-atg-world.firebaseapp.com>
 
 ## Tools and Technologies Used
 
 - **Tailwind CSS**
-- **Daisy UI**
 - **React.js**
 - **Firebase**
 
@@ -26,13 +23,13 @@
 - **Clone the repository:**
 
    ```sh
-   git clone https://github.com/shahadathhs/industrial-plaza.git
+   git clone https://github.com/shahadathhs/atg-world.git
    ```
 
 - **Navigate to the project directory:**
 
    ```sh
-   cd industrial-plaza
+   cd atg-world
    ```
 
 - **Install the dependencies:**
