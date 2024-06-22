@@ -43,7 +43,8 @@ const Navbar = () => {
         {/* user management */}
         <div className="font-bold flex items-center">
           {/* create account / logout */}
-          {user ? (
+          {user 
+          ? 
             <div>
               <div className="dropdown dropdown-hover dropdown-end">
                 <div tabIndex={0} role="button" className="btn m-1">
@@ -75,7 +76,7 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>
-          ) : (
+          : 
             <div className="flex w-full gap-3 items-center">
               <button
                 onClick={() => setShowSignInModal(true)}
@@ -87,7 +88,7 @@ const Navbar = () => {
                 It is free!
               </span>
             </div>
-          )}
+          }
         </div>
       </div>
       {showSignInModal && (
